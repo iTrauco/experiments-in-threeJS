@@ -1,0 +1,15 @@
+{
+  "name": "aquino-3d",
+  "version": "1.0.0",
+  "description": "DC Capstone Project",
+  "main": "index.js",
+  "dependencies": {
+    "three": "^0.104.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
