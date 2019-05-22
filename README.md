@@ -10,7 +10,7 @@ Follow the instructions below for a visual example.
 
 1. Go to Pull Requests
 
-2. Click on the name of thw desired Pull Request
+2. Click on the name of the desired Pull Request
 
 3. A visual preview of the results will appear on the following overview/summary screen for the pull request. 
 
