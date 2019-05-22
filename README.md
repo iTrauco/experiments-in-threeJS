@@ -10,8 +10,8 @@ Follow the instructions below to sample each...
 
 1. Go to Pull Requests
 
-2. Click on the name of each pull request*
-*Each will be left 'OPEN'
+2. Click on the name of each 'OPEN' pull request
+
 
 3. Scroll down to preview changes
 
