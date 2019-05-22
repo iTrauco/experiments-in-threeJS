@@ -18,14 +18,43 @@
         return x + from;
     };
     
-    let createTriangle = function() {
+    /*let createTorus = function() {
         let geometry = new THREE
 		.TorusGeometry(
-			10, 
+			7, 
+			3, 
+			15, 
+			3,
+		);*/
+
+		let createTorus = function() {
+        let geometry = new THREE
+		.TorusGeometry(
+			8, 
+			3, 
 			2, 
-			20, 
-			30
-		);
+			15,
+		); 
+
+		/*let createTorus = function() {
+        let geometry = new THREE
+		.TorusGeometry(
+			7, 
+			3, 
+			2, 
+			15,
+			2 * M*/
+
+			/* let createTorus = function() {
+        let geometry = new THREE
+		.TorusGeometry(
+			7, 
+			3, 
+			15, 
+			3,
+			3 * Math.PI
+		); */
+
 
     let material = new THREE.MeshBasicMaterial(	{
 		color: Math.random() * 0xffffff,
@@ -67,12 +96,14 @@
         
     };
    
-    
+    // TDD SPEED CONTROLS shape generation rate
     // main animation loop @ 60 FPM
     let mainLoop = function() {
         let x = Math.random();
-        if(x < 0.1)
-            createTriangle();
+        //if(x < 0.050)
+		//if(x < 0.1)
+		if(x < 0.06)
+            createTorus();
         
         shapeResult.forEach(morph => morph.position.y -= ADD);
         
