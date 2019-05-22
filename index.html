@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>5 - Rain of Donuts</title>
+        <title>space</title>
         <link rel = "stylesheet" href = "Style.css">
         <script src = "/js/three.js"></script>       
     </head>
@@ -10,108 +10,128 @@
 
 <script>    
     let scene, camera, renderer;
-    let shapeResult = [];
-    let ADD = 0.1;
+    let orb;
+    let discs = [];
+    let ADD = 0.02;
     
-    let randomInRange = function(from, to) {
-        let x = Math.random() * (to - from);
-        return x + from;
-    };
-    
-    /*let createTorus = function() {
-        let geometry = new THREE
-		.TorusGeometry(
-			7, 
-			3, 
-			15, 
-			3,
-		);*/
-
-		let createTorus = function() {
-        let geometry = new THREE
-		.TorusGeometry(
-			8, 
-			3, 
-			2, 
-			15,
-		); 
-
-		/*let createTorus = function() {
-        let geometry = new THREE
-		.TorusGeometry(
-			7, 
-			3, 
-			2, 
-			15,
-			2 * M*/
-
-			/* let createTorus = function() {
-        let geometry = new THREE
-		.TorusGeometry(
-			7, 
-			3, 
-			15, 
-			3,
-			3 * Math.PI
-		); */
-
-
-    let material = new THREE.MeshBasicMaterial(	{
-		color: Math.random() * 0xffffff,
-		wireframe: true
-		});
-
-    let morph = new THREE.Mesh( 
-		geometry, 
-		material );
+    let createOrb = function() {
+        let geometry = new THREE.SphereGeometry(
+            5, 
+            30, 
+            35
+            );
+        let material = new THREE.MeshBasicMaterial(
+            {
+                color: 0xdaa81a,
+                wireframe: true
+        });
+        orb = new THREE.Mesh( 
+            geometry, 
+            material 
+            );
+        scene.add(orb);
         
-        morph.position.x = randomInRange(-45, 45);
-        morph.position.z = randomInRange(-45, 45);
-        morph.position.y = 45;
-
-        scene.add(morph);
-        shapeResult.push(morph);
+        geometry = new THREE.TorusGeometry(
+            10, 
+            0.7, 
+            2, 
+            50
+            )
+        material = new THREE.MeshBasicMaterial( {
+            color: 0xda7b93,
+            wireframe: true
+            });
+        let disc = new THREE.Mesh(
+            geometry, 
+            material);
+        discs.push(disc);
+        
+        geometry = new THREE.TorusGeometry(
+            6.9, 
+            0.7, 
+            2, 
+            50
+            );
+        material = new THREE.MeshBasicMaterial( {
+            color: 0x376e6f,
+            wireframe: true
+            });
+        disc = new THREE.Mesh(
+            geometry,  
+            material
+            );
+        discs
+        .push(disc);
+        
+        
+        geometry = new THREE.TorusGeometry(
+            8.5, 
+            0.7, 
+            2, 
+            50
+            );
+        material = new THREE.MeshBasicMaterial( {
+            color: 0x2e151b,
+            wireframe: true
+            });
+        disc = new THREE.Mesh(
+            geometry, 
+            material);
+        discs
+        .push(disc);
+        
+         
+        discs.forEach(disc => {
+            disc.rotation.x = 1.7;
+            disc.rotation.y = 100;
+            scene.add(disc);
+        });
+        
     };
     
-    
-    // set up the environment - 
     // initiallize scene, camera, objects and renderer
-    let init = function() {
+    let startUp = function() {
         // create the scene
         scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x000000);
+        scene.background = new THREE.Color(0x2F4454);
         
-        // create an locate camera
-        camera = new THREE.PerspectiveCamera(75, 
+        // create an locate the camera
+        camera = new THREE.PerspectiveCamera(90, 
                         window.innerWidth / window.innerHeight, 
                         1, 1000);
-        camera.position.z = 50;
-        camera.position.y = -10;
+        camera.position.z = 18;
+        
+        
+        createOrb();
+        
+        axes = new THREE.AxesHelper(10);
+        scene.add(axes);
         
         // create the renderer   
         renderer = new THREE.WebGLRenderer();   
-        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setSize(
+            window.innerWidth, 
+            window.innerHeight
+            );
         
-        document.body.appendChild(renderer.domElement);
+        document.body.appendChild(
+            renderer.domElement
+            );
         
     };
    
-    // TDD SPEED CONTROLS shape generation rate
-    // main animation loop @ 60 FPM
+    
+    // main animation loop @ 60 fps
     let mainLoop = function() {
-        let x = Math.random();
-        //if(x < 0.050)
-		//if(x < 0.1)
-		if(x < 0.06)
-            createTorus();
-        
-        shapeResult.forEach(morph => morph.position.y -= ADD);
-        
+        camera.position.y += ADD;
+        orb.rotation.y += 0.2;
+        if(camera.position.y >= 7 || camera.position.y <= -7)
+            ADD *= -1;
         renderer.render(scene, camera);
         requestAnimationFrame(mainLoop);
     };
     
     ///////////////////////////////////////////////
-    init();
+    startUp();
     mainLoop();
 </script>
