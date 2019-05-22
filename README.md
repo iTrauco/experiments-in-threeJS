@@ -15,3 +15,4 @@ Follow the instructions below to sample each...
 
 3. Scroll down to preview changes
 
+![](https://github.com/iTrauco/experiments-in-threeJS/blob/master/Demo/2019-05-21%2020.55.31.gif)
