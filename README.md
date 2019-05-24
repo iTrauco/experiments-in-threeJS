@@ -2,9 +2,11 @@
 
 This repo contains experiments in Three.js.
 
-A visual preview of each experiment is contained in the 'open' "Pull Request(PR)" for each branch, nothing will be merged to master. 
+A visual preview of each experiment is contained in the 'open' "Pull Request(PR)" of each branch.
 
-Follow the instructions below for a visual example. 
+###Nothing will be merged to master. 
+
+Follow the instructions below for a visual example
 
 ## Instructions
 
