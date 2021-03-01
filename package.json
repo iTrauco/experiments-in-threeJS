@@ -4,7 +4,7 @@
   "description": "DC Capstone Project",
   "main": "index.js",
   "dependencies": {
-    "three": "^0.104.0"
+    "three": "^0.125.0"
   },
   "devDependencies": {},
   "scripts": {
